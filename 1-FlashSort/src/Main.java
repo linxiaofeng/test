@@ -18,7 +18,7 @@ public class Main {
         final int MAX_THREAD = 18;
         String input,output,directory;
         if(args.length != 3){
-            input = "test1.txt";
+            input = "test20.txt";
             output = "result.txt";
             directory = "./work/";
         }
@@ -40,7 +40,7 @@ public class Main {
         List<String> fileNames = new ArrayList<>();
         ExecutorService executorService = new ThreadPoolExecutor(6,6,0L, TimeUnit.SECONDS,new LinkedBlockingQueue<>(16));
         List<ReadAndSortThread> threads = new ArrayList<>();
-        for(int i = 0; i < MAX_THREAD; i++){
+        for(int i = 0; i <= MAX_THREAD; i++){
             startPos = i == 0 ? 0 : endPos;
             endPos = getPosition(file,(i+1) * blockSize);
             fileName = directory + i + ".txt";
@@ -161,9 +161,6 @@ public class Main {
                     if(isEnd){
                         break;
                     }
-                }
-                if(leftLength != 0){
-                    lists.add(new String(left,0,leftLength));
                 }
                 clockEnd = System.currentTimeMillis();
                 System.out.println(name + "read:" + (clockEnd - clockStart));
