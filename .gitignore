@@ -1,5 +1,6 @@
 .idea
-.class
+*.class
 out
 .iml
-.txt
+*.txt
+*.exe
